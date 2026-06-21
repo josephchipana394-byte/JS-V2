@@ -48,5 +48,5 @@ if (edad1 < 13) {
 //Reto 3: Combinar condiciones
 //Muestra un mensaje especial si la edad es mayor de 18 y la temperatura es menor de 15.
 if (edad1 > 18 && temperatura < 15) {
-    alert("Eres una persona adulta con frio: lleva abrigo extra");
+    alert("Eres una persona adulta con frio: lleva un abrigo extra");
 }
