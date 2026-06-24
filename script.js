@@ -25,7 +25,7 @@ console.log('(DEBUG) Numero secreto:', numeroSecreto);
 function verificarIntento() {
     let valor = Number(inputIntento.value);
     
-    // validar entrada
+    // validar entrada para saber si es numero
     if (isNaN(valor) || valor < 1 || valor > 100) {
         mostrarMensaje('⚠ Ingresa un numero de 1 al 100','orange');
         return;
