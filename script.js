@@ -54,6 +54,26 @@ function verificarIntento() {
         mostrarMensaje('📉 Muy bajo. Intenta más alto.', '#4ecdc4');
     }
 }
+
+function reiniciarJuego() {
+    numeroSecreto = Math.floor(Math.random()*100) + 1;
+    intentos = 0;
+    historialIntentos = [];
+
+    contador.textContent = 'Intentos: 0';
+    historial.textContent = 'Historial:';
+    mostrarMensaje('🎯 ¡Nuevo juego! Adivina el número...', '#e94560');
+    btnAdivinar.disabled = false;
+    btnReiniciar.style.display = 'none';
+    inputIntento.value = '';
+    inputIntento.focus();
+
+    //resetar la tarjeta para celebracion visual
+    tarjeta.style.borderColor = 'rgba(233, 69, 96, 0.3)';
+    tarjeta.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.4)';
+
+    console.log('(DEBUG) Nuevo número secreto:', numeroSecreto);
+}
 // funcion para presionar el boton enter cuando se termina de ingresar el valor
 inputIntento.addEventListener('keydown',function(event){
         if (event.key === 'Enter') {
@@ -64,3 +84,4 @@ inputIntento.addEventListener('keydown',function(event){
     });
 
 btnAdivinar.addEventListener('click',verificarIntento);
+btnReiniciar.addEventListener('click',reiniciarJuego);
