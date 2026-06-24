@@ -47,6 +47,21 @@
       justify-content: center;
       margin-bottom: 20px;
     }
+
+    .historial {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: center;
+      margin-top: 20px;
+      min-height: 30px;
+    }
+    .guess-pill {
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: bold;
+    }
  
     input {
       padding: 12px;
@@ -128,7 +143,8 @@
  
     <p id="mensaje"></p>
     <p id="contador">Intentos: 0</p>
-    <p id="historial">Historial: </p>
+    <!--<p id="historial">Historial: </p>  -->
+    <div id="historial" class="historial"></div>
  
     <button id="btnReiniciar" style="display: none;">
       🔄 Jugar de nuevo

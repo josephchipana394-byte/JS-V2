@@ -36,8 +36,10 @@ function verificarIntento() {
 
     //Agregar al historial
     historialIntentos.push(valor);
-    historial.textContent = 'Historial: ' + historialIntentos; 
-
+    //historial.textContent = 'Historial: ' + historialIntentos; 
+    let color = valor > numeroSecreto ? '#ff6b6b' : valor < numeroSecreto ? '#4ecdc4' : '#00ff88';
+    historial.innerHTML += '<span class="guess-pill" style="background:' + color + '30; color:' + color + '">' + valor + '</span>';
+    
     // comparar con el numero secreto
     if (valor === numeroSecreto) {
         mostrarMensaje('🎉 ¡ Correcto Era el '+ numeroSecreto +'!', '#00ff88');
@@ -55,6 +57,15 @@ function verificarIntento() {
         let pista = obtenerPista(valor,numeroSecreto);
         mostrarMensaje('📉 Muy bajo.'+ pista, '#4ecdc4');
     }
+    verificarGameover();
+}
+function verificarGameover(){
+    if (intentos===10) {
+        mostrarMensaje('🕹 Game Over el numero fue '+ numeroSecreto,'orange');
+        btnAdivinar.disabled = true;
+        btnReiniciar.style.display = 'inline-block';
+        
+    }
 }
 
 function reiniciarJuego() {
@@ -63,7 +74,8 @@ function reiniciarJuego() {
     historialIntentos = [];
 
     contador.textContent = 'Intentos: 0';
-    historial.textContent = 'Historial:';
+    //historial.textContent = 'Historial:';
+    historial.innerHTML = '';
     mostrarMensaje('🎯 ¡Nuevo juego! Adivina el número...', '#e94560');
     btnAdivinar.disabled = false;
     btnReiniciar.style.display = 'none';
