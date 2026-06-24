@@ -48,10 +48,12 @@ function verificarIntento() {
         tarjeta.style.boxShadow = '0 0 40px rgba(0, 255, 136, 0.3)';
 
     } else if(valor > numeroSecreto){
-        mostrarMensaje('📈 Muy alto. Intenta más bajo.', '#ff6b6b');
+        let pista = obtenerPista(valor,numeroSecreto);
+        mostrarMensaje('📈 Muy alto.'+ pista, '#ff6b6b');
      
     } else {
-        mostrarMensaje('📉 Muy bajo. Intenta más alto.', '#4ecdc4');
+        let pista = obtenerPista(valor,numeroSecreto);
+        mostrarMensaje('📉 Muy bajo.'+ pista, '#4ecdc4');
     }
 }
 
@@ -74,6 +76,22 @@ function reiniciarJuego() {
 
     console.log('(DEBUG) Nuevo número secreto:', numeroSecreto);
 }
+
+//funcion para Pistas de cercania
+function obtenerPista(intento, secreto) {
+    let diferencia = Math.abs(intento - secreto); 
+    if (diferencia <= 5) {
+        return '🔥 ¡Muy Cerca!';
+    } else if(diferencia <= 15){
+        return '♨️ Caliente';
+    }else if(diferencia <= 30){
+        return '🌤️ Tibio';
+    }else{
+        return '❄️ Frío';
+    }
+}
+
+
 // funcion para presionar el boton enter cuando se termina de ingresar el valor
 inputIntento.addEventListener('keydown',function(event){
         if (event.key === 'Enter') {
