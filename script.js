@@ -21,6 +21,7 @@ let intentos = 0;
 let historialIntentos = [];
 
 console.log('(DEBUG) Numero secreto:', numeroSecreto);
+
 //Funcion para procesar el numero ingresado en caja de texto
 function verificarIntento() {
     let valor = Number(inputIntento.value);
@@ -48,8 +49,9 @@ function verificarIntento() {
         //celebracion visual: la tarjeta brilla verde
         tarjeta.style.borderColor = '#00ff88';
         tarjeta.style.boxShadow = '0 0 40px rgba(0, 255, 136, 0.3)';
-
+        
     } else if(valor > numeroSecreto){
+        //validamos con la funcion obtenerPista
         let pista = obtenerPista(valor,numeroSecreto);
         mostrarMensaje('📈 Muy alto.'+ pista, '#ff6b6b');
      
@@ -57,8 +59,11 @@ function verificarIntento() {
         let pista = obtenerPista(valor,numeroSecreto);
         mostrarMensaje('📉 Muy bajo.'+ pista, '#4ecdc4');
     }
+    //lamamos a la funcion para verificar los intentos
     verificarGameover();
 }
+
+//funcion para verificar hasta 10 intentos
 function verificarGameover(){
     if (intentos===10) {
         mostrarMensaje('🕹 Game Over el numero fue '+ numeroSecreto,'orange');
