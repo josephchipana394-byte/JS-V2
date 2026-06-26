@@ -5,6 +5,9 @@ const contador = document.getElementById("contador");
 const historial = document.getElementById("historial");
 const btnReiniciar = document.getElementById("btnReiniciar");
 const tarjeta = document.getElementById("game-card");
+const mejorPuntaje =document.getElementById("mejorPuntaje");
+
+
 console.log("Elementos encontrados");
 
 //funcion para mostrar mensaje
@@ -19,6 +22,7 @@ mostrarMensaje("¡Bienvenido al juego!",'#e94560');
 let numeroSecreto = Math.floor(Math.random()*100)+1;
 let intentos = 0;
 let historialIntentos = [];
+let Puntajes = 0;
 
 console.log('(DEBUG) Numero secreto:', numeroSecreto);
 
@@ -44,6 +48,8 @@ function verificarIntento() {
     // comparar con el numero secreto
     if (valor === numeroSecreto) {
         mostrarMensaje('🎉 ¡ Correcto Era el '+ numeroSecreto +'!', '#00ff88');
+        Puntajes = intentos;
+        mejorPuntaje.textContent='🏆 Mejor Puntaje: '+ Puntajes;
         btnAdivinar.disabled = true;
         btnReiniciar.style.display = 'inline-block';
         //celebracion visual: la tarjeta brilla verde
@@ -66,7 +72,7 @@ function verificarIntento() {
 //funcion para verificar hasta 10 intentos
 function verificarGameover(){
     if (intentos===10) {
-        mostrarMensaje('🕹 Game Over el numero fue '+ numeroSecreto,'orange');
+        mostrarMensaje('💀 Game Over el numero fue '+ numeroSecreto,'orange');
         btnAdivinar.disabled = true;
         btnReiniciar.style.display = 'inline-block';
         
@@ -107,6 +113,8 @@ function obtenerPista(intento, secreto) {
         return '❄️ Frío';
     }
 }
+
+
 
 
 // funcion para presionar el boton enter cuando se termina de ingresar el valor
